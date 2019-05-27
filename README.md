@@ -11,7 +11,7 @@ Local Application Update System
 
         ApplicationDeployment ad;
         UpdateCheckInfo info;
-        string ConnectionString = @"Data Source = 10.3.25.116; Integrated Security = false; Initial Catalog = ReworkDB; User Id = srv_rework; Password=QCprjGR2017";
+        string ConnectionString = @"Data Source = "your data source"; Integrated Security = false; Initial Catalog = "your catalog"; User Id = "yourid"; Password="yourpassword" ";
         SqlConnection sqlConnection;
         SqlCommand sqlCommand;
         SqlDataReader dataReader;
