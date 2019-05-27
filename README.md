@@ -2,8 +2,11 @@
 Local Application Update System
 
 Gif ;
+
 ![guncellme](https://user-images.githubusercontent.com/29266933/58417635-15257b00-808e-11e9-9144-fb7bbce56aa5.gif)
 
+#Example
+------------
 ```sh
 //güncelleme
 
@@ -62,53 +65,44 @@ Gif ;
             }
         }
 
-        private bool UserKayitlimi(string machinename, string username, string appname)
+```
+#Using
+------
+```sh
+
+        bool durum = false;
+        private void login_VisibleChanged(object sender, EventArgs e)
         {
-            using (sqlConnection = new SqlConnection(ConnectionString))
+            database = new database();
+            if (database.GuncellemeVarmi())
             {
-                sqlConnection.Open();
-                string Query = "Select pcname from GuncellemeBilgileri where pcname='" + machinename + "'  AND username='" + username + "' AND appname='" + appname + "'";
-                using (sqlCommand = new SqlCommand(Query, sqlConnection))
-                {
-                    dataReader = sqlCommand.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        makineVarmi = true;
-                    }
-                }
-                sqlConnection.Close();
+                pictureBox4.Image = Properties.Resources.red_circle_md;
+                label4.Text = "Yeni Güncelleme Mevcut";
+                durum = true;
             }
-            return makineVarmi;
-        }
-        private void VeritabaniKayit()
-        {
-            using (sqlConnection = new SqlConnection(ConnectionString))
+            else
             {
-                sqlConnection.Open();
-                string Query = "insert into GuncellemeBilgileri(username,pcname,appname,version,kayittarihi) values (@1,@2,@3,@4,@5)";
-                using (sqlCommand = new SqlCommand(Query, sqlConnection))
-                {
-                    sqlCommand.Parameters.AddWithValue("@1", Username);    //username
-                    sqlCommand.Parameters.AddWithValue("@2", MachineName); //pcname
-                    sqlCommand.Parameters.AddWithValue("@3", AppName);     //appname
-                    sqlCommand.Parameters.AddWithValue("@4", info.AvailableVersion.ToString());  //güncel version
-                    sqlCommand.Parameters.AddWithValue("@5", KayitTarih); //kayittarihi
-                    sqlCommand.ExecuteNonQuery();
-                }
-                sqlConnection.Close();
+                pictureBox4.Image = Properties.Resources.green_circle_md;
+                label4.Text = "Versiyonunuz güncel";
+                durum = false;
             }
         }
-        private void VeritabaniGuncelle()
-        {
-            using (sqlConnection = new SqlConnection(ConnectionString))
+
+           if (durum == true)
             {
-                sqlConnection.Open();
-                string Query = "Update  GuncellemeBilgileri  SET version='" + info.AvailableVersion.ToString() + "' , guncellemetarihi='" + KayitTarih + "'  WHERE username='" + Username + "' AND pcname='" + MachineName + "' AND appname='" + AppName + "'";
-                using (sqlCommand = new SqlCommand(Query, sqlConnection))
+                DialogResult dialogResult = MessageBox.Show("Yeni versiyon mevcut yüklemek istediğinize emin misiniz ?", "Yüklemek istermisiniz ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    sqlCommand.ExecuteNonQuery();
+                    database.guncelle();
                 }
-                sqlConnection.Close();
             }
-        }
+            else
+            {
+                dialogInformation = new DialogInformation();
+                dialogInformation.pictureBox1.Image = Properties.Resources.icons8_info_96;
+                dialogInformation.label1.Text = "Versiyonunuz güncel durumda.";
+                dialogInformation.panel2.BackColor = Color.DodgerBlue;
+                dialogInformation.ShowDialog();
+            }
+
 ```
