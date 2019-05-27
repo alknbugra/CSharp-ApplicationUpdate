@@ -88,9 +88,11 @@ Gif ;
             }
         }
 
-           if (durum == true)
+            private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (durum == true)
             {
-                DialogResult dialogResult = MessageBox.Show("Yeni versiyon mevcut yüklemek istediğinize emin misiniz ?", "Yüklemek istermisiniz ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Yeni versiyon mevcut yüklemek istediğinize emin misiniz ?", "Yüklemek                      istermisiniz ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     database.guncelle();
@@ -104,5 +106,5 @@ Gif ;
                 dialogInformation.panel2.BackColor = Color.DodgerBlue;
                 dialogInformation.ShowDialog();
             }
-
+        }
 ```
