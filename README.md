@@ -1,10 +1,8 @@
 # CSharp-ApplicationUpdate
 Local Application Update System
 
-![update](https://user-images.githubusercontent.com/29266933/58417367-4c475c80-808d-11e9-9aa9-ef91ec4a67e5.PNG)
-![update_1](https://user-images.githubusercontent.com/29266933/58417368-4c475c80-808d-11e9-947c-36096b7d739f.PNG)
-![update_2](https://user-images.githubusercontent.com/29266933/58417369-4cdff300-808d-11e9-88a9-74bf5fdfa3f8.PNG)
-![update_3](https://user-images.githubusercontent.com/29266933/58417370-4cdff300-808d-11e9-971e-c6a2b5c70cca.PNG)
+Gif ;
+![guncellme](https://user-images.githubusercontent.com/29266933/58417635-15257b00-808e-11e9-9144-fb7bbce56aa5.gif)
 
 ```sh
 //güncelleme
